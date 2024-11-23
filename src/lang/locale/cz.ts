@@ -79,7 +79,6 @@ export default {
     FLASHCARD_GOOD_LABEL: "Good Button Text",
     FLASHCARD_HARD_LABEL: "Hard Button Text",
     FLASHCARD_RESHUFFLE_LABEL: "Reshuffle Button Text",
-    FLASHCARD_RESHUFFLE_LABEL: "Reshuffle Button Text",
     FLASHCARD_EASY_DESC: 'Customize the label for the "Easy" Button',
     FLASHCARD_GOOD_DESC: 'Customize the label for the "Good" Button',
     FLASHCARD_HARD_DESC: 'Customize the label for the "Hard" Button',
