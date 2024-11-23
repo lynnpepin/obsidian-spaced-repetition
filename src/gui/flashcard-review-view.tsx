@@ -43,6 +43,7 @@ export class FlashcardReviewView {
     public context: HTMLElement;
 
     public response: HTMLDivElement;
+    public reshuffleButton: HTMLButtonElement;
     public hardButton: HTMLButtonElement;
     public goodButton: HTMLButtonElement;
     public easyButton: HTMLButtonElement;
@@ -342,6 +343,8 @@ export class FlashcardReviewView {
         this.answerButton.addClass("sr-is-hidden");
         this.hardButton.removeClass("sr-is-hidden");
         this.easyButton.removeClass("sr-is-hidden");
+        this.reshuffleButton.removeClass("sr-is-hidden");
+        // todo lynn - need something here?
 
         if (this.reviewMode === FlashcardReviewMode.Cram) {
             this.response.addClass("is-cram");
@@ -349,6 +352,12 @@ export class FlashcardReviewView {
             this.easyButton.setText(`${this.settings.flashcardEasyText}`);
         } else {
             this.goodButton.removeClass("sr-is-hidden");
+            // todo lynn-- something here?
+            this._setupEaseButton(
+                this.reshuffleButton,
+                this.settings.flashcardReshuffleText,
+                ReviewResponse.Hard, // todo lynn - change
+            );
             this._setupEaseButton(
                 this.hardButton,
                 this.settings.flashcardHardText,
@@ -364,6 +373,7 @@ export class FlashcardReviewView {
                 this.settings.flashcardEasyText,
                 ReviewResponse.Easy,
             );
+            // todo lynn -- reshuffle button here? need something here?
         }
     }
 
@@ -511,6 +521,7 @@ export class FlashcardReviewView {
 
     private _createResponseButtons() {
         this._createShowAnswerButton();
+        this._createReshuffleButton();
         this._createHardButton();
         this._createGoodButton();
         this._createEasyButton();
@@ -519,6 +530,7 @@ export class FlashcardReviewView {
     private _resetResponseButtons() {
         // Sets all buttons in to their default state
         this.answerButton.removeClass("sr-is-hidden");
+        this.reshuffleButton.addClass("sr-is-hidden");
         this.hardButton.addClass("sr-is-hidden");
         this.goodButton.addClass("sr-is-hidden");
         this.easyButton.addClass("sr-is-hidden");
@@ -531,6 +543,21 @@ export class FlashcardReviewView {
         this.answerButton.addEventListener("click", () => {
             this._showAnswer();
         });
+    }
+
+    private _createReshuffleButton() {
+        // todo lynn; here and above
+        this.reshuffleButton = this.response.createEl("button");
+        this.reshuffleButton.addClasses([
+            "sr-response-button",
+            "sr-hard-button",
+            "sr-bg-red", // todo
+            "sr-is-hidden",
+        ]);
+        this.reshuffleButton.setText(this.settings.flashcardReshuffleText);
+        // todo lynn! functionality!
+        //this.reshuffleButton.addEventListener("click", () => {
+        //});
     }
 
     private _createHardButton() {
