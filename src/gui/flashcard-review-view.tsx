@@ -550,8 +550,8 @@ export class FlashcardReviewView {
         this.reshuffleButton = this.response.createEl("button");
         this.reshuffleButton.addClasses([
             "sr-response-button",
-            "sr-hard-button",
-            "sr-bg-red", // todo
+            "sr-reshuffle-button",
+            "sr-bg-orange", // todo-lynn
             "sr-is-hidden",
         ]);
         this.reshuffleButton.setText(this.settings.flashcardReshuffleText);
