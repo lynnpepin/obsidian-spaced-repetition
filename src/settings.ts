@@ -44,6 +44,7 @@ export interface SRSettings {
     flashcardEasyText: string;
     flashcardGoodText: string;
     flashcardHardText: string;
+    flashcardReshuffleText: string;
     reviewButtonDelay: number;
 
     // algorithm
@@ -103,6 +104,7 @@ export const DEFAULT_SETTINGS: SRSettings = {
     flashcardEasyText: t("EASY"),
     flashcardGoodText: t("GOOD"),
     flashcardHardText: t("HARD"),
+    flashcardReshuffleText: t("RESHUFFLE"),
     reviewButtonDelay: 0,
 
     // algorithm

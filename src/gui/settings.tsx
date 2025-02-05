@@ -753,6 +753,32 @@ export class SRSettingTab extends PluginSettingTab {
             });
 
         new Setting(containerEl)
+            .setName(t("FLASHCARD_RESHUFFLE_LABEL"))
+            .setDesc(t("FLASHCARD_RESHUFFLE_DESC"))
+            .addText((text) =>
+                text
+                    .setValue(this.plugin.data.settings.flashcardReshuffleText)
+                    .onChange((value) => {
+                        applySettingsUpdate(async () => {
+                            this.plugin.data.settings.flashcardReshuffleText = value;
+                            await this.plugin.savePluginData();
+                        });
+                    }),
+            )
+            .addExtraButton((button) => {
+                button
+                    .setIcon("reset")
+                    .setTooltip(t("RESET_DEFAULT"))
+                    .onClick(async () => {
+                        this.plugin.data.settings.flashcardReshuffleText =
+                            DEFAULT_SETTINGS.flashcardReshuffleText;
+                        await this.plugin.savePluginData();
+
+                        this.display();
+                    });
+            });
+
+        new Setting(containerEl)
             .setName(t("REVIEW_BUTTON_DELAY"))
             .setDesc(t("REVIEW_BUTTON_DELAY_DESC"))
             .addSlider((slider) =>
